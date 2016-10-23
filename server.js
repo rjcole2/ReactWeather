@@ -4,9 +4,8 @@ var app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(function (req, res, next) {
-  if (req.headers['X-Forwarded-Proto'] === 'https') {
+  if (req.headers['x-forwarded-proto'] === 'https') {
     res.redirect('http://' + req.hostname + req.url);
-    //res.redirect(301, ['http://', req.get('Host'), req.url].join(''));
   } else {
     next();
   }
